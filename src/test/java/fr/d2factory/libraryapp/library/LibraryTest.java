@@ -58,21 +58,11 @@ public class LibraryTest {
 
         student = new Student();
 
+        getBookFromJsonFile();
 
-        try {
-
-            JSONParser jsonParser = new JSONParser();
-
-            String json = jsonParser.parse(new FileReader("src/test/resources/books.json")).toString();
-            ObjectMapper mapper = new ObjectMapper();
-
-            books = mapper.readValue(json, Book[].class);
-
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
-        }
         bookRepository.addBooks(Arrays.asList(books));
     }
+
 
     @Test
     public void member_can_borrow_a_book_if_book_is_available() {
@@ -229,5 +219,20 @@ public class LibraryTest {
         //Then
         library.borrowBook(isbn,member,localDate);
 
+    }
+
+    private void getBookFromJsonFile() {
+        try {
+
+            JSONParser jsonParser = new JSONParser();
+
+            String json = jsonParser.parse(new FileReader("src/test/resources/books.json")).toString();
+            ObjectMapper mapper = new ObjectMapper();
+
+            books = mapper.readValue(json, Book[].class);
+
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
     }
 }

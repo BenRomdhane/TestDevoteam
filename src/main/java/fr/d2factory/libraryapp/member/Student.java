@@ -13,15 +13,15 @@ public class Student extends Member {
 
         if (isStudentFirstYear) {
             if (numberOfDays > 15 && numberOfDays <= 30) {
-                setWallet((float) (getWallet() - (numberOfDays - 15) * 0.1));
+                setWallet((float) (this.getWallet() - (numberOfDays - 15) * 0.1));
             } else if (numberOfDays > 30) {
-                setWallet((float) (getWallet() - (((numberOfDays - 30) * 0.15) + 1.5)));
+                setWallet((float) (this.getWallet() - (((numberOfDays - 30) * 0.15) + 1.5)));
             }
         } else {
             if (numberOfDays <= 30) {
-                setWallet((float) (getWallet() - numberOfDays * 0.1));
-            } else if (numberOfDays > 30) {
-                setWallet((float) (getWallet() - (((numberOfDays - 30) * 0.15) + 3)));
+                setWallet((float) (this.getWallet() - numberOfDays * 0.1));
+            } else {
+                setWallet((float) (this.getWallet() - (((numberOfDays - 30) * 0.15) + 3)));
             }
         }
 
